@@ -8,8 +8,8 @@ from escola.throttles import MatriculaThrottleAnon
 
 class EstudanteViewSet(viewsets.ModelViewSet):
     queryset = Estudante.objects.all().order_by('id')
-    serializer_class = EstudanteSerializer
-    permission_classes = [DjangoModelPermissions]
+    #serializer_class = EstudanteSerializer
+    # permission_classes = [DjangoModelPermissions]
     filter_backends = [DjangoFilterBackend,filters.OrderingFilter,filters.SearchFilter]
     ordering_fields = ['nome']
     search_fields = ['nome','cpf']
@@ -25,21 +25,21 @@ class CursoViewSet(viewsets.ModelViewSet):
     http_method_names = ['get','post','put','patch'] 
 
 class MatriculaViewSet(viewsets.ModelViewSet):
-    queryset = Matricula.objects.all()
-    permission_classes = [DjangoModelPermissions]
+    queryset = Matricula.objects.all().order_by('id')
+    # permission_classes = [DjangoModelPermissions]
     serializer_class = MatriculaSerializer
     throttle_classes = [UserRateThrottle, MatriculaThrottleAnon]
     http_method_names = ['get','post',] 
 
 class ListaMatriculaEstudante(generics.ListAPIView):
-    permission_classes = [DjangoModelPermissions]
+    # permission_classes = [DjangoModelPermissions]
     def get_queryset(self):
         queryset = Matricula.objects.filter(estudante_id=self.kwargs['pk'])
         return queryset
     serializer_class = ListaMatriculasEstudanteSerializer
 
 class ListaMatriculaCurso(generics.ListAPIView):
-    permission_classes = [DjangoModelPermissions]
+    # permission_classes = [DjangoModelPermissions]
     def get_queryset(self):
         queryset = Matricula.objects.filter(curso_id=self.kwargs['pk'])
         return queryset

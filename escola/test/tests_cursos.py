@@ -52,5 +52,6 @@ class CursoTestCase(APITestCase):
             'descricao':'Curso teste 1 atualizado',
             'nivel':'I'
         }
+        #data = self.curso_01
         response = self.client.put('/cursos/1/', data=data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
