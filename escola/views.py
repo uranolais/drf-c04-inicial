@@ -19,9 +19,10 @@ class EstudanteViewSet(viewsets.ModelViewSet):
         return EstudanteSerializer
 
 class CursoViewSet(viewsets.ModelViewSet):
-    queryset = Curso.objects.all()
-    permission_classes = [DjangoModelPermissions]
+    queryset = Curso.objects.all().order_by('id')
+    # permission_classes = [DjangoModelPermissions]
     serializer_class = CursoSerializer
+    http_method_names = ['get','post','put','patch'] 
 
 class MatriculaViewSet(viewsets.ModelViewSet):
     queryset = Matricula.objects.all()
