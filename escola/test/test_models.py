@@ -1,7 +1,7 @@
 from escola.models import Estudante, Curso
 from django.test import TestCase
 
-class EstudanteModelTestCase(TestCase):
+class ModelsTestCase(TestCase):
     # teste inicial
     # def test_falha(self):
     #     self.fail('Teste falhou')
@@ -26,7 +26,7 @@ class EstudanteModelTestCase(TestCase):
         self.assertEqual(self.estudante.data_nascimento,'2003-02-02')
         self.assertEqual(self.estudante.celular, '86 99999-9999')
         #MUDAR OS ATRIBUTOS PARA TESTAR
-        
+
     def test_verifica_atributos_do_curso(self):
         """Teste para verificar os atributos do modelo de curso"""
         self.assertEqual(self.curso.codigo, 'CTM')
