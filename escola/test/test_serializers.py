@@ -21,7 +21,7 @@ class SerializersTestCase(TestCase):
     def test_verifica_campos_serializados_estudante(self):
         """Teste que verifica os campos que estão sendo serializados do estudante"""
         data = self.serializer_estudante.data
-        #mostrar os campos do serializer - testar tirando uma dessas opções
+        #mostrar os campos do serializer - testar tirando uma dessas opções tanto aqui quanto no serializer
         self.assertEqual(set(data.keys()), set(['id','nome', 'email', 'cpf', 'data_nascimento','celular']))
     
     def test_verifica_conteudo_dos_campos_serializados_estudante(self):
