@@ -12,6 +12,7 @@ class CursoTestCase(APITestCase):
 
     def setUp(self):
         self.url = reverse('Cursos-list')
+        #tem que mudar as credenciais pq agr ta batendo com os dados do fixtures
         self.user = User.objects.create_user(username='admin', password='admin')
         # #FORÇAR AUTENTICAÇÃO
         # self.client.force_authenticate(user=self.user)
