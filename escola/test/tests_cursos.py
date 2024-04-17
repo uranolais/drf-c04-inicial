@@ -13,7 +13,8 @@ class CursoTestCase(APITestCase):
     def setUp(self):
         self.url = reverse('Cursos-list')
         #tem que mudar as credenciais pq agr ta batendo com os dados do fixtures
-        self.user = User.objects.create_user(username='admin', password='admin')
+        #self.user = User.objects.create_user(username='admin', password='admin')
+        self.user = User.objects.get(username='lais')
         # #FORÇAR AUTENTICAÇÃO
         # self.client.force_authenticate(user=self.user)
         self.curso_01 = Curso.objects.create(
@@ -29,7 +30,7 @@ class CursoTestCase(APITestCase):
     # ## TESTANDO GET
     def test_requisicao_get_para_listar_cursos(self):
         """Teste para verificar a requisição GET para listar os cursos"""
-        self.client.force_authenticate(user=self.user)
+        self.client.force_authenticate(user=self.user) # independente das permissões do usuário
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, status.HTTP_200_OK) #Test that first and second are equal. If the values do not compare equal, the test will fail.
         #self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
